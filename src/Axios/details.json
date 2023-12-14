@@ -1,0 +1,79 @@
+{
+  "users": [
+    {
+      "fullname": "Alisha Mendonca",
+      "email": "alishamendonca7@gmail.com",
+      "phone": "9325839196",
+      "password": "Alisha13*",
+      "gender": "female",
+      "id": 1
+    },
+    {
+      "fullname": "Anisha Mendes",
+      "email": "anishamendonca7@gmail.com",
+      "phone": "9399839196",
+      "password": "Anisha13*",
+      "gender": "female",
+      "id": 2
+    },
+    {
+      "fullname": "Alister Mendes",
+      "email": "alister8@gmail.com",
+      "phone": "9399830096",
+      "password": "Alister13*",
+      "gender": "male",
+      "id": 3
+    },
+    {
+      "fullname": "san",
+      "email": "san@gmail.com",
+      "phone": "686976867",
+      "password": "India@123",
+      "confirmPassword": "India@123",
+      "gender": "female",
+      "id": 4
+    },
+    {
+      "fullname": "alsiha",
+      "email": "alisa@gmail.com",
+      "phone": "3846327053",
+      "password": "Alisha@123",
+      "confirmPassword": "Alisha@123",
+      "gender": "female",
+      "id": 5
+    },
+    {
+      "fullname": "Prajakta Koli",
+      "email": "prajakta5@gmail.com",
+      "phone": "9898989898",
+      "password": "Prajakta5*",
+      "confirmPassword": "Prajakta5*",
+      "gender": "female",
+      "id": 6
+    }
+  ],
+  "event": [
+    {
+      "eventname": "Database",
+      "date": "2023-12-15",
+      "time": "16:52",
+      "location": "ewcxdscx",
+      "participantList": "dxqwe",
+      "roles": "rdqewdxweddx",
+      "mode": "dd",
+      "meetlink": "dexex",
+      "id": 1
+    },
+    {
+      "eventname": "h,khn",
+      "date": "2023-12-15",
+      "time": "16:55",
+      "location": "kjb.n",
+      "participantList": "hn,j",
+      "roles": "n,b,v",
+      "mode": "bmnv",
+      "meetlink": "hlghj",
+      "id": 2
+    }
+  ]
+}
