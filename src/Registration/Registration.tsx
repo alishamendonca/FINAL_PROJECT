@@ -12,6 +12,7 @@ interface dataValues {
   password: string;
   confirmPassword: string;
   gender: string;
+  role:string;
   id: number;
 }
 
@@ -29,6 +30,7 @@ const validationSchema = Yup.object({
     .required("*This is a required field"),
   gender: Yup.string().oneOf(["male", "female", "other"], "Invalid gender").required('*This is a required field'),
   phone: Yup.string().matches(/^\+?[0-9]+$/, 'Invalid phone number').required('*This is a required field'),
+  role:Yup.string().oneOf(["organizer", "user"], "Invalid role").required('*This is a required field'),
 });
 
 const Registration = () => {
@@ -41,6 +43,7 @@ const Registration = () => {
     password: "",
     confirmPassword: "",
     gender: "",
+    role:"",
     id: 0,
   });
 
@@ -54,6 +57,7 @@ const Registration = () => {
         password: "",
         confirmPassword: "",
         gender: "",
+        role:"",
         id: 0,
       });
       console.log("User added successfully");
@@ -68,7 +72,7 @@ const Registration = () => {
 
   return (
     <Container style={{ maxWidth: "400px", backgroundColor: "#ffffff", padding: "20px", borderRadius: "10px", color: "black", boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", marginTop: "50px" }}>
-      <h2 style={{ backgroundColor: "rgb(178, 178, 42,0.8)", color: "white", marginTop: "0px", borderRadius: "10px", padding: "10px" }}>Sign Up</h2>
+      <h2 style={{  color: "black", marginTop: "0px", borderRadius: "10px", padding: "10px" }}>Sign Up</h2>
       <Formik
         initialValues={newUser}
         validationSchema={validationSchema}
@@ -236,6 +240,41 @@ const Registration = () => {
                   </div>
                   {errors.gender && touched.gender && (
                     <p className="error">{errors.gender}</p>
+                  )}
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className="mb-3">
+              <Col md={12}>
+                <Form.Group>
+                  <Form.Label className="left-align-label">Role</Form.Label>
+                  <div>
+                    <Form.Check
+                      inline
+                      label="Organizer"
+                      type="radio"
+                      name="role"
+                      value="organizer"
+                      checked={values.role === "organizer"}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={errors.role && touched.role ? "input-error" : ""}
+                    />
+                    <Form.Check
+                      inline
+                      label="User"
+                      type="radio"
+                      name="role"
+                      value="user"
+                      checked={values.role === "user"}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={errors.role && touched.role ? "input-error" : ""}
+                    />
+                   
+                  </div>
+                  {errors.role && touched.role && (
+                    <p className="error">{errors.role}</p>
                   )}
                 </Form.Group>
               </Col>
