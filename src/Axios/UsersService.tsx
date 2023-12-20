@@ -1,3 +1,4 @@
+import EditEvent from "../Headerfiles/EditEvent";
 import axios from "./axios";
 
 
@@ -43,12 +44,54 @@ const UsersService = () => {
       addEvent: async (data:object) => {
         try {
           const response = await axios.post('/event', data);
+           
           return response.data; // Return the data from the response
         } catch (error) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
           throw error; // Rethrow the error for handling in the component
         }
-      }
-
+      },
+      deleteEvent: async (id:number) =>{
+        return await axios.delete(`/event/${id}`)
+    },
+    updateEvent: async (id:number,data:object) =>{
+      return await axios.put(`/event/${id}`,data);
+    }
     };
   };
   return services;
