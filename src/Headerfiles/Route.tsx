@@ -28,7 +28,7 @@ const Routes=[
         element:<CreateEvent />,
     },
     {
-        path:'/',
+        path:'/homepage/',
         element:<Dashboard />,
     },
     {
@@ -36,7 +36,7 @@ const Routes=[
         element:<Registration />,
     },
     {
-        path:'/signin/',
+        path:'/',
         element:<SignIn />,
     },
     
