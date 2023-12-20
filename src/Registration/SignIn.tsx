@@ -73,7 +73,7 @@ const SignIn = () => {
       if (user) {
         handleShowModal("Success", "User signed in successfully!", "success");
         console.log('success');
-      navigate('/dashboard/')
+      navigate('/')
       } else {
         handleShowModal("Error", "Invalid email or password", "error");
         console.log('error');
@@ -82,7 +82,7 @@ const SignIn = () => {
       console.error("Error signing in:", error);
       handleShowModal("Error", "Something went wrong. Please try again later.", "error");
     }
-  
+  console.log('Alisha');
     console.log(values);
     console.log(actions.isValid);
     await new Promise((resolve) => setTimeout(resolve, 1000));
