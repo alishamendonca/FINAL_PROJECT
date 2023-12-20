@@ -9,7 +9,7 @@ const ViewEvent = () => {
         date: string;
         time: string;
         location: string;
-        participantList:string[]|string;
+        participantList:string[];
         roles:string;
         mode:string;
         meetlink:string;
@@ -64,8 +64,14 @@ const ViewEvent = () => {
           <p>Role: {selectedEvent.roles}</p>
           <p>Mode: {selectedEvent.mode}</p>
           <p>Meet Link: {selectedEvent.meetlink}</p>
-          <p>Participants: {selectedEvent.participantList}</p>
-          
+          {/* <p>Participants: {selectedEvent.participantList}</p> */}
+          <p>Participant List:</p>
+          <ul style={{listStyle:'none',padding:'0px'}}>
+            {selectedEvent.participantList.map((participant:string, index:number) => (
+              <li key={index}>{participant}</li>
+            ))}
+          </ul>
+
           {/* Add more details based on your event structure */}
         </div>
       )}
