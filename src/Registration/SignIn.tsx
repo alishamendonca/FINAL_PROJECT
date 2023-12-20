@@ -8,7 +8,7 @@ import { Button,Container,Row,Col,Modal } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 //import axios from "axios";
 import UsersService from "../Axios/UsersService";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 
 //import './style.css';
@@ -17,12 +17,14 @@ import { useNavigate } from "react-router-dom";
  
  interface FormData{   
     email:string;
-    password:string;  
+    password:string;
+    role:string;
  
 }
 const dataValues:FormData={ 
     email:"", 
     password:"",
+    role:""
    
 }
 const validationSchema=Yup.object({
@@ -30,7 +32,7 @@ const validationSchema=Yup.object({
   email:Yup.string().email("*Invalid E-mail format").required("*This is a required field"),
   password:Yup.string().min(6).matches( /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#*&])[A-Za-z\d@#*&]{8,10}$/,
   "*Invalid password format").required("*This is a required field"),
-  confirmPassword: Yup.string()
+  role:Yup.string().oneOf(["organizer", "user"], "Invalid role").required('*This is a required field')
 
 });
  
@@ -42,7 +44,8 @@ const SignIn = () => {
   const [modalType, setModalType] = useState(""); // 'success' or 'error'
   const [currentUser,setCurrentUser]=useState({
     email:'',
-    password:''
+    password:'',
+    role:''
   });
   const navigate = useNavigate();
 
@@ -67,13 +70,13 @@ const SignIn = () => {
       const users = response.data;
       console.log('User List', users);
     
-      const user = users.find((u: any) => u.email.trim() === values.email.trim() && u.password.trim() === values.password.trim());
+      const user = users.find((u: any) => u.email.trim() === values.email.trim() && u.password.trim() === values.password.trim() && u.role.trim()===values.role.trim() );
       console.log('User found', user);
     
       if (user) {
         handleShowModal("Success", "User signed in successfully!", "success");
         console.log('success');
-      navigate('/')
+      navigate('/homepage/')
       } else {
         handleShowModal("Error", "Invalid email or password", "error");
         console.log('error');
@@ -94,8 +97,8 @@ const SignIn = () => {
  
   return (
 
-    <Container style={{maxWidth:"400px",backgroundColor: "rgba(16, 75, 126, 0.5)",padding: "20px", borderRadius: "10px", color: "white"}}>
-      <h2 style={{backgroundColor:" rgb(178, 178, 42,0.8)",color:"white",marginTop:"0px",borderRadius:"10px"}}>Sign In</h2>
+    <Container style={{maxWidth:"400px",backgroundColor: "rgba(16, 75, 126, 0.5)",padding: "20px", borderRadius: "10px", color: "white",marginTop:"30px"}}>
+      <h2 style={{color:"white",marginTop:"0px",marginBottom:"20px",borderRadius:"10px"}}>Sign In</h2>
       <Formik
       initialValues={dataValues}
       validationSchema={validationSchema}
@@ -163,6 +166,49 @@ const SignIn = () => {
           </Col>
  
          </Row>
+         <Row className="mb-3">
+              <Col md={12}>
+                <Form.Group>
+                  <Form.Label className="left-align-label">Role</Form.Label>
+                  <div>
+                    <Form.Check
+                      inline
+                      label="Organizer"
+                      type="radio"
+                      name="role"
+                      value="organizer"
+                      checked={values.role === "organizer"}
+                      onChange={(e) => {
+                        handleChange(e);
+                        setCurrentUser({ ...currentUser, role: e.target.value });
+                      }}
+                      //onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={errors.role && touched.role ? "input-error" : ""}
+                    />
+                    <Form.Check
+                      inline
+                      label="User"
+                      type="radio"
+                      name="role"
+                      value="user"
+                      checked={values.role === "user"}
+                      onChange={(e) => {
+                        handleChange(e);
+                        setCurrentUser({ ...currentUser, role: e.target.value });
+                      }}
+                      //onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={errors.role && touched.role ? "input-error" : ""}
+                    />
+                   
+                  </div>
+                  {errors.role && touched.role && (
+                    <p className="error">{errors.role}</p>
+                  )}
+                </Form.Group>
+              </Col>
+            </Row>
         
  
            <Row className="mb-3">
@@ -188,6 +234,9 @@ const SignIn = () => {
         </Form>
       )}
     </Formik>
+    <p style={{marginTop:"10px",textAlign:"center"}}>
+       Don't have an account? <Link to="/registration">Register</Link>
+    </p>
    
     </Container>
 
