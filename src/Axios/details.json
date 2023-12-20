@@ -50,30 +50,106 @@
       "confirmPassword": "Prajakta5*",
       "gender": "female",
       "id": 6
+    },
+    {
+      "fullname": "Manisha Mendonca",
+      "email": "manisha11@gmail.com",
+      "phone": "9922233267",
+      "password": "Manisha11*",
+      "confirmPassword": "Manisha11*",
+      "gender": "female",
+      "id": 7
+    },
+    {
+      "fullname": "Namira Shah",
+      "email": "namira22@gmail.com",
+      "phone": "8899998898",
+      "password": "Namira22*",
+      "confirmPassword": "Namira22*",
+      "gender": "female",
+      "id": 8
+    },
+    {
+      "fullname": "Raina Fernandes",
+      "email": "raina5@gmail.com",
+      "phone": "9876766554",
+      "password": "Raina@123",
+      "confirmPassword": "Raina@123",
+      "gender": "female",
+      "id": 9
+    },
+    {
+      "fullname": "Mary cruz",
+      "email": "marypc9@gmail.com",
+      "phone": "9933887787",
+      "password": "Marypc@123",
+      "confirmPassword": "Marypc@123",
+      "gender": "female",
+      "role": "user",
+      "id": 10
+    },
+    {
+      "fullname": "Elissa Braganca",
+      "email": "elissa17@gmail.com",
+      "phone": "9966552291",
+      "password": "Elissa@123",
+      "confirmPassword": "Elissa@123",
+      "gender": "female",
+      "role": "user",
+      "id": 11
     }
   ],
   "event": [
     {
-      "eventname": "Database",
-      "date": "2023-12-15",
-      "time": "16:52",
-      "location": "ewcxdscx",
-      "participantList": "dxqwe",
-      "roles": "rdqewdxweddx",
-      "mode": "dd",
-      "meetlink": "dexex",
-      "id": 1
+      "eventname": "Monthly call",
+      "date": "2023-12-31",
+      "time": "20:30",
+      "location": "Panaji",
+      "participantList": [
+        "Alisha Mendonca",
+        "Alister Mendes",
+        "Prajakta Koli",
+        "Manisha Mendonca"
+      ],
+      "roles": "Participants",
+      "mode": "offline",
+      "meetlink": "",
+      "eventDocument": {},
+      "id": 5
     },
     {
-      "eventname": "h,khn",
-      "date": "2023-12-15",
-      "time": "16:55",
-      "location": "kjb.n",
-      "participantList": "hn,j",
-      "roles": "n,b,v",
-      "mode": "bmnv",
-      "meetlink": "hlghj",
-      "id": 2
+      "id": 6,
+      "eventname": "Code optimization",
+      "date": "2023-12-30",
+      "time": "20:15",
+      "location": "",
+      "participantList": [
+        "alsiha",
+        "Manisha Mendonca",
+        "san",
+        "Alister Mendes",
+        "Prajakta Koli"
+      ],
+      "roles": "Participant",
+      "mode": "online",
+      "meetlink": "Mapusa",
+      "eventDocument": {}
+    },
+    {
+      "eventname": "React workshop",
+      "date": "2024-01-01",
+      "time": "11:30",
+      "location": "Margao",
+      "participantList": [
+        "Alisha Mendonca",
+        "Anisha Mendes",
+        "Alister Mendes"
+      ],
+      "roles": "user",
+      "mode": "offline",
+      "meetlink": "",
+      "eventDocument": {},
+      "id": 11
     }
   ]
 }
