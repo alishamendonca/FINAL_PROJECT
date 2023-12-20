@@ -1,29 +1,39 @@
 //import React from 'react';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav,  } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
+import Logo from './assets/worksphere-high-resolution-logo-transparent.png';
 const Header = () => {
   const headerStyle = {
-    backgroundColor: '#3498db', // Header background color
+    backgroundColor: '#3887BE', // Header background color
     color: 'white', // Text color
     width:'100%',
     padding: '10px', // Padding
   };
 
   return (
-    <Navbar bg="light" expand="lg" style={headerStyle} >
+    <Navbar  expand="lg" style={headerStyle} >
       <div className='container-fluid'>
       <LinkContainer to="/">
-        <Navbar.Brand>Your App Name</Navbar.Brand>
+        <Navbar.Brand>
+        <img
+          src={Logo}
+          width="170px"
+          height="30"
+          className="d-inline-block align-top"
+          alt="Your Logo"
+         />
+
+        </Navbar.Brand>
       </LinkContainer>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <LinkContainer to="/dashboard/">
-            <Nav.Link>About</Nav.Link>
+          <LinkContainer to="/homepage/">
+            <Nav.Link>Home</Nav.Link>
           </LinkContainer>
           <LinkContainer to="/create-event/">
-            <Nav.Link>Create/Edit Event</Nav.Link>
+            <Nav.Link>Schedule Event</Nav.Link>
           </LinkContainer>
           {/* <LinkContainer to="/schedule-meeting/">
             <Nav.Link>Schedule a Meeting</Nav.Link>
@@ -31,8 +41,9 @@ const Header = () => {
           <LinkContainer to="/registration/">
             <Nav.Link>Register</Nav.Link>
           </LinkContainer>
-          <LinkContainer to="/signin/">
-            <Nav.Link>Sign in</Nav.Link>
+          <LinkContainer to="/">
+            <Nav.Link>
+               Sign in</Nav.Link>
           </LinkContainer>
           <LinkContainer to="/calendar/">
             <Nav.Link>Calendar</Nav.Link>
@@ -43,11 +54,11 @@ const Header = () => {
           {/* <LinkContainer to="/participant-list/">
             <Nav.Link>Participant List</Nav.Link>
           </LinkContainer> */}
-          {/* <LinkContainer to="/document-upload">
-            <Nav.Link>Document Upload</Nav.Link>
-          </LinkContainer> */}
-          <LinkContainer to="/user-profile/">
-            <Nav.Link>User Profile</Nav.Link>
+          <LinkContainer to="/view-event/">
+            <Nav.Link>View Events</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/edit-event/">
+            <Nav.Link>Edit Event</Nav.Link>
           </LinkContainer>
           {/* <LinkContainer to="/settings/">
             <Nav.Link>Settings</Nav.Link>
