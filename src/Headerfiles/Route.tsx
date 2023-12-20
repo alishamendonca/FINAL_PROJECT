@@ -1,15 +1,16 @@
 import LazyLoader from "../LazyLoader";
 
 import { lazy } from "react";
+//import EditEvent from "./EditEvent";
 
-const Calendar =LazyLoader(lazy(async () => await import('./Calendar')));
+const Calendar =LazyLoader(lazy(async () => await import('./MyCalendar')));
 const CreateEvent=LazyLoader(lazy(async () => await import('./Createevent')));
 const Dashboard=LazyLoader(lazy(async () => await import('./Dashboard')));
-//const Participants=LazyLoader(lazy(async () => await import('./Participants')));
+const Viewevent=LazyLoader(lazy(async () => await import('./ViewEvent')));
 //const Roles=LazyLoader(lazy(async () => await import('./Roles')));
 //const ScheduleMeet=LazyLoader(lazy(async () => await import('./ScheduleMeet')));
 //const Settings=LazyLoader(lazy(async () => await import('./Settings')));
-const UserProfile=LazyLoader(lazy(async () => await import('./UserProfile')));
+const Editevent=LazyLoader(lazy(async () => await import('./EditEvent')));
 const Registration=LazyLoader(lazy(async () => await import('../Registration/Registration')));
 const SignIn=LazyLoader(lazy(async () => await import('../Registration/SignIn')));
 
@@ -27,7 +28,7 @@ const Routes=[
         element:<CreateEvent />,
     },
     {
-        path:'/dashboard/',
+        path:'/',
         element:<Dashboard />,
     },
     {
@@ -52,8 +53,12 @@ const Routes=[
     //     element:<ScheduleMeet />
     // },
     {
-        path:'/user-profile/',
-        element:<UserProfile />
+        path:'/view-event/',
+        element:<Viewevent />
+    },
+    {
+        path:'/edit-event/',
+        element:<Editevent />
     },
     // {
     //     path:'/settings/',
