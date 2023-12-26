@@ -109,6 +109,16 @@
       "gender": "female",
       "role": "user",
       "id": 20
+    },
+    {
+      "fullname": "John Mendonca",
+      "email": "john25@gmail.com",
+      "phone": "9835771926",
+      "password": "John@123",
+      "confirmPassword": "John@123",
+      "gender": "male",
+      "role": "user",
+      "id": 21
     }
   ],
   "event": [
@@ -131,6 +141,25 @@
       "meetlink": "",
       "eventDocument": {},
       "id": 13
+    },
+    {
+      "eventname": "React workshop",
+      "date": "2023-12-30",
+      "time": "11:00",
+      "location": "",
+      "participantList": [
+        "Alisha Mendonca",
+        "Anisha Mendonca",
+        "Xavier Dsouza",
+        "Alister Hosamani",
+        "Elissa Braganca",
+        "John Mendonca"
+      ],
+      "roles": "Briefing on basics of react js",
+      "mode": "online",
+      "meetlink": "https://meet.google.com/zjx-nebz-uhj",
+      "eventDocument": {},
+      "id": 14
     }
   ]
 }
