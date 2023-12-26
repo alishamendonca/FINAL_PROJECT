@@ -1,84 +1,6 @@
 {
   "users": [
     {
-      "fullname": "Alisha Mendonca",
-      "email": "alishamendonca7@gmail.com",
-      "phone": "9325839196",
-      "password": "Alisha13*",
-      "gender": "female",
-      "id": 1
-    },
-    {
-      "fullname": "Anisha Mendes",
-      "email": "anishamendonca7@gmail.com",
-      "phone": "9399839196",
-      "password": "Anisha13*",
-      "gender": "female",
-      "id": 2
-    },
-    {
-      "fullname": "Alister Mendes",
-      "email": "alister8@gmail.com",
-      "phone": "9399830096",
-      "password": "Alister13*",
-      "gender": "male",
-      "id": 3
-    },
-    {
-      "fullname": "san",
-      "email": "san@gmail.com",
-      "phone": "686976867",
-      "password": "India@123",
-      "confirmPassword": "India@123",
-      "gender": "female",
-      "id": 4
-    },
-    {
-      "fullname": "alsiha",
-      "email": "alisa@gmail.com",
-      "phone": "3846327053",
-      "password": "Alisha@123",
-      "confirmPassword": "Alisha@123",
-      "gender": "female",
-      "id": 5
-    },
-    {
-      "fullname": "Prajakta Koli",
-      "email": "prajakta5@gmail.com",
-      "phone": "9898989898",
-      "password": "Prajakta5*",
-      "confirmPassword": "Prajakta5*",
-      "gender": "female",
-      "id": 6
-    },
-    {
-      "fullname": "Manisha Mendonca",
-      "email": "manisha11@gmail.com",
-      "phone": "9922233267",
-      "password": "Manisha11*",
-      "confirmPassword": "Manisha11*",
-      "gender": "female",
-      "id": 7
-    },
-    {
-      "fullname": "Namira Shah",
-      "email": "namira22@gmail.com",
-      "phone": "8899998898",
-      "password": "Namira22*",
-      "confirmPassword": "Namira22*",
-      "gender": "female",
-      "id": 8
-    },
-    {
-      "fullname": "Raina Fernandes",
-      "email": "raina5@gmail.com",
-      "phone": "9876766554",
-      "password": "Raina@123",
-      "confirmPassword": "Raina@123",
-      "gender": "female",
-      "id": 9
-    },
-    {
       "fullname": "Mary cruz",
       "email": "marypc9@gmail.com",
       "phone": "9933887787",
@@ -97,59 +19,118 @@
       "gender": "female",
       "role": "user",
       "id": 11
+    },
+    {
+      "fullname": "Alex Mendonca",
+      "email": "alex05@gmail.com",
+      "phone": "9405216726",
+      "password": "Alexkm@123",
+      "confirmPassword": "Alexkm@123",
+      "gender": "male",
+      "role": "organizer",
+      "id": 12
+    },
+    {
+      "fullname": "Xavier Dsouza",
+      "email": "xavier2@gmail.com",
+      "phone": "9392958217",
+      "password": "Xavier@123",
+      "confirmPassword": "Xavier@123",
+      "gender": "male",
+      "role": "organizer",
+      "id": 13
+    },
+    {
+      "fullname": "Nelson Dsouza",
+      "email": "rachel7@gmail.com",
+      "phone": "9011234876",
+      "password": "Rachel@123",
+      "confirmPassword": "Rachel@123",
+      "gender": "female",
+      "role": "organizer",
+      "id": 14
+    },
+    {
+      "fullname": "Kamalika Rege",
+      "email": "kamalika21@gmail.com",
+      "phone": "9877665578",
+      "password": "Kamalika@1",
+      "confirmPassword": "Kamalika@1",
+      "gender": "female",
+      "role": "organizer",
+      "id": 15
+    },
+    {
+      "fullname": "Alisha Mendonca",
+      "email": "alisha13@gmail.com",
+      "phone": "9325839196",
+      "password": "Alisha13*",
+      "confirmPassword": "Alisha13*",
+      "gender": "female",
+      "role": "organizer",
+      "id": 16
+    },
+    {
+      "fullname": "Anisha Mendonca",
+      "email": "anisha19@gmail.com",
+      "phone": "9887547895",
+      "password": "Anisha19*",
+      "confirmPassword": "Anisha19*",
+      "gender": "female",
+      "role": "user",
+      "id": 17
+    },
+    {
+      "fullname": "Namira Shah",
+      "email": "namira22@gmail.com",
+      "phone": "8977698751",
+      "password": "Namira@123",
+      "confirmPassword": "Namira@123",
+      "gender": "female",
+      "role": "organizer",
+      "id": 18
+    },
+    {
+      "fullname": "Alister Hosamani",
+      "email": "alister8@gmail.com",
+      "phone": "9191223761",
+      "password": "Alister@1",
+      "confirmPassword": "Alister@1",
+      "gender": "male",
+      "role": "user",
+      "id": 19
+    },
+    {
+      "fullname": "Raina Mendonca",
+      "email": "raina5@gmail.com",
+      "phone": "9529118734",
+      "password": "Raina@123",
+      "confirmPassword": "Raina@123",
+      "gender": "female",
+      "role": "user",
+      "id": 20
     }
   ],
   "event": [
     {
-      "eventname": "Monthly call",
-      "date": "2023-12-31",
-      "time": "20:30",
-      "location": "Panaji",
+      "eventname": "Angular Workshop",
+      "date": "2024-01-09",
+      "time": "12:00",
+      "location": "Kala Academy",
       "participantList": [
+        "Raina Mendonca",
         "Alisha Mendonca",
-        "Alister Mendes",
-        "Prajakta Koli",
-        "Manisha Mendonca"
+        "Kamalika Rege",
+        "Nelson Dsouza",
+        "Xavier Dsouza",
+        "Elissa Braganca",
+        "Mary cruz"
       ],
-      "roles": "Participants",
+      "roles": "Briefing on basics of angular",
       "mode": "offline",
       "meetlink": "",
       "eventDocument": {},
-      "id": 5
-    },
-    {
-      "id": 6,
-      "eventname": "Code optimization",
-      "date": "2023-12-30",
-      "time": "20:15",
-      "location": "",
-      "participantList": [
-        "alsiha",
-        "Manisha Mendonca",
-        "san",
-        "Alister Mendes",
-        "Prajakta Koli"
-      ],
-      "roles": "Participant",
-      "mode": "online",
-      "meetlink": "Mapusa",
-      "eventDocument": {}
-    },
-    {
-      "eventname": "React workshop",
-      "date": "2024-01-01",
-      "time": "11:30",
-      "location": "Margao",
-      "participantList": [
-        "Alisha Mendonca",
-        "Anisha Mendes",
-        "Alister Mendes"
-      ],
-      "roles": "user",
-      "mode": "offline",
-      "meetlink": "",
-      "eventDocument": {},
-      "id": 11
+      "id": 13
     }
   ]
 }
