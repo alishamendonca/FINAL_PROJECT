@@ -4,6 +4,8 @@ import { Formik } from "formik";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import UsersService from "../Axios/UsersService";
+import { useNavigate } from "react-router-dom";
+import BackgroundImg from '../assets/annie-spratt-sggw4-qDD54-unsplash.jpg';
 
 interface dataValues {
   fullname: string;
@@ -30,12 +32,13 @@ const validationSchema = Yup.object({
     .required("*This is a required field"),
   gender: Yup.string().oneOf(["male", "female", "other"], "Invalid gender").required('*This is a required field'),
   phone: Yup.string().matches(/^\+?[0-9]+$/, 'Invalid phone number').required('*This is a required field'),
-  role:Yup.string().oneOf(["organizer", "user"], "Invalid role").required('*This is a required field'),
+  role:Yup.string().oneOf([ "user"], "Invalid role").required('*This is a required field'),
 });
 
 const Registration = () => {
   const usersService = UsersService();
-  const [userList, setUsersList] = useState<dataValues[]>([]);
+  const navigate=useNavigate();
+  //const [userList, setUsersList] = useState<dataValues[]>([]);
   const [newUser, setNewUser] = useState<dataValues>({
     fullname: "",
     email: "",
@@ -61,6 +64,8 @@ const Registration = () => {
         id: 0,
       });
       console.log("User added successfully");
+      navigate('/');
+
       // fetchUsers(); // Uncomment if needed
     } catch (error: unknown) {
       console.error('Error adding user: ', error.message);
@@ -71,8 +76,10 @@ const Registration = () => {
   
 
   return (
-    <Container style={{ maxWidth: "400px", backgroundColor: "#ffffff", padding: "20px", borderRadius: "10px", color: "black", boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", marginTop: "50px" }}>
-      <h2 style={{  color: "black", marginTop: "0px", borderRadius: "10px", padding: "10px" }}>Sign Up</h2>
+    <div style={{ backgroundImage: `url(${BackgroundImg})`, backgroundSize: "cover", minHeight: "100vh",display: "flex",alignItems: "center",justifyContent: "center"}}
+>
+      <Container style={{ maxWidth: "400px", backgroundColor: "rgba(16, 75, 126, 0.5)", padding: "20px", borderRadius: "10px", color: "white", boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", marginTop: "50px" }}>
+      <h2 style={{  color: "white", marginTop: "0px",marginBottom:"15px", borderRadius: "10px", padding: "10px" }}>Registration</h2>
       <Formik
         initialValues={newUser}
         validationSchema={validationSchema}
@@ -249,7 +256,7 @@ const Registration = () => {
                 <Form.Group>
                   <Form.Label className="left-align-label">Role</Form.Label>
                   <div>
-                    <Form.Check
+                    {/* <Form.Check
                       inline
                       label="Organizer"
                       type="radio"
@@ -259,7 +266,7 @@ const Registration = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       className={errors.role && touched.role ? "input-error" : ""}
-                    />
+                    /> */}
                     <Form.Check
                       inline
                       label="User"
@@ -292,6 +299,8 @@ const Registration = () => {
         )}
       </Formik>
     </Container>
+    </div>
+    
   );
 };
 
