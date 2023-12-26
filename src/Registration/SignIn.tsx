@@ -1,17 +1,15 @@
 
- 
 import { Formik } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Yup from 'yup';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button,Container,Row,Col,Modal } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
-//import axios from "axios";
 import UsersService from "../Axios/UsersService";
 import { useNavigate,Link } from "react-router-dom";
+import BackgroundImg from '../assets/annie-spratt-sggw4-qDD54-unsplash.jpg';
 
 
-//import './style.css';
  
  
  
@@ -49,6 +47,7 @@ const SignIn = () => {
   });
   const navigate = useNavigate();
 
+
   const handleShowModal = (title: string, body: string, type: string) => {
     setModalTitle(title);
     setModalBody(body);
@@ -75,10 +74,13 @@ const SignIn = () => {
     
       if (user) {
         handleShowModal("Success", "User signed in successfully!", "success");
+        localStorage.setItem("token",'true');
+        localStorage.setItem("userLoggedIn", JSON.stringify(user));
         console.log('success');
       navigate('/homepage/')
+      window.location.reload();
       } else {
-        handleShowModal("Error", "Invalid email or password", "error");
+        handleShowModal("Error", "Invalid email,password or role", "error");
         console.log('error');
       }
     } catch (error) {
@@ -96,8 +98,8 @@ const SignIn = () => {
  
  
   return (
-
-    <Container style={{maxWidth:"400px",backgroundColor: "rgba(16, 75, 126, 0.5)",padding: "20px", borderRadius: "10px", color: "white",marginTop:"30px"}}>
+    <div style={{ backgroundImage: `url(${BackgroundImg})`, backgroundSize: "cover", minHeight: "100vh",display: "flex",alignItems: "center",justifyContent: "center"}}>
+       <Container style={{maxWidth:"400px",backgroundColor: "rgba(16, 75, 126, 0.5)",padding: "20px", borderRadius: "10px", color: "white",marginTop:"30px"}}>
       <h2 style={{color:"white",marginTop:"0px",marginBottom:"20px",borderRadius:"10px"}}>Sign In</h2>
       <Formik
       initialValues={dataValues}
@@ -239,6 +241,8 @@ const SignIn = () => {
     </p>
    
     </Container>
+    </div>
+   
 
  
    
