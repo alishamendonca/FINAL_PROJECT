@@ -1,4 +1,4 @@
-import EditEvent from "../Headerfiles/EditEvent";
+//import EditEvent from "../Headerfiles/EditEvent";
 import axios from "./axios";
 
 
@@ -47,40 +47,6 @@ const UsersService = () => {
            
           return response.data; // Return the data from the response
         } catch (error) {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
           
           throw error; // Rethrow the error for handling in the component
