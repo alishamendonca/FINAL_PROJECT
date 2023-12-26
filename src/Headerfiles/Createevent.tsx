@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Formik } from "formik";
 import * as Yup from 'yup';
 import UsersService from "../Axios/UsersService";
-
+import backgroundImg from '../assets/annie-spratt-sggw4-qDD54-unsplash.jpg';
 interface EventFormData {
   eventname: string;
   date: string;
@@ -102,7 +102,9 @@ const Createevent: React.FC = () => {
   };
   //const userArray=usersService().getUserList();
   return (
-    <Container>
+    <div  style={{ backgroundImage: `url(${backgroundImg})`, backgroundSize: 'cover', minHeight: '100vh' }} >
+      <h1 style={{textAlign:'center'}}>Fill in the details below to create an Event</h1>
+          <Container style={{ backgroundColor: 'rgba(255, 255, 255, 0.6)',marginBottom:'15px',width:'900px', padding: '10px', borderRadius: '10px' }}>
       <Row className="justify-content-center mt-5">
         <Col xs={12} md={8}>
           <Formik
@@ -201,58 +203,8 @@ const Createevent: React.FC = () => {
 
               
 
-                {/* <Form.Group>
-                  <Form.Label>Participant List:</Form.Label>
-                  {userArray.map((user) => (
-                    <div key={user.id}>
-                      <Form.Check
-                        type="checkbox"
-                        id={`participant-${user.id}`}
-                        label={user.fullname}
-                        name="participantList"
-                        value={user.fullname}
-                        checked={values.participantList.includes(user.fullname)}
-                        onChange={(e) => {
-                          const isChecked = e.target.checked;
-                          setEventList((prev) => ({
-                            ...prev,
-                            participantList: isChecked
-                              ? [...prev.participantList, user.fullname]
-                              : prev.participantList.filter((name) => name !== user.fullname),
-                          }));
-                        }}
-                      />
-                    </div>
-                  ))}
-                  {errors.participantList && touched.participantList && (
-                    <p className="error">{errors.participantList}</p>
-                  )}
-                </Form.Group> */}
-
-
-                
-
-
-                
-
-                {/* <Form.Group>
-                  <Form.Label>Participant List:</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="participantList"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.participantList}
-                    className={errors.participantList && touched.participantList ? "is-invalid" : ""}
-                  />
-                  {errors.participantList && touched.participantList && (
-                    <p className="error">{errors.participantList}</p>
-                  )}
-
-                </Form.Group> */}
-
                 <Form.Group>
-                  <Form.Label>Roles:</Form.Label>
+                  <Form.Label>Event Details:</Form.Label>
                   <Form.Control
                     type="text"
                     name="roles"
@@ -354,6 +306,8 @@ const Createevent: React.FC = () => {
         </Col>
       </Row>
     </Container>
+    </div>
+
   );
  
 };
