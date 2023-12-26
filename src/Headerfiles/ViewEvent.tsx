@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Button, ListGroup } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import { Button, Container,Row,Col, ListGroup } from 'react-bootstrap';
 import UsersService from "../Axios/UsersService";
+import BackgroundImg from '../assets/annie-spratt-sggw4-qDD54-unsplash.jpg';
 
 const ViewEvent = () => {
     interface Event {
@@ -41,11 +42,13 @@ const ViewEvent = () => {
   };
 
   return (
-    <div>
+   <Container style={{ backgroundImage: `url(${BackgroundImg})`, backgroundSize: 'cover', minHeight: '100vh' }}>
+    <Row className="justify-content-center">
+      <Col xs={12} md={8}>
       <h1 className="text-center mt-4 mb-3">Event List</h1>
-      <ListGroup>
+      <ListGroup >
         {events.map(event => (
-          <ListGroup.Item key={event.id} className="d-flex justify-content-between align-items-center">
+          <ListGroup.Item key={event.id} className="d-flex justify-content-between align-items-center" style={{backgroundColor:'#F6F7C4'}}>
             <span>{event.eventname}</span>
             <Button variant="info" onClick={() => handleDetailsButtonClick(event)}>
               Show Details
@@ -56,8 +59,8 @@ const ViewEvent = () => {
 
       {/* Display event details when an event is selected */}
       {selectedEvent && (
-        <div className="mt-3">
-          <h2>Details for {selectedEvent.eventname}</h2>
+        <div className="mt-3"  style={{ backgroundColor: '#fff',marginBottom:'20px', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
+          <h2 style={{ textDecoration: 'underline' }}>Details for {selectedEvent.eventname}</h2>
           <p>Date: {selectedEvent.date}</p>
           <p>Time: {selectedEvent.time}</p>
           <p>Location: {selectedEvent.location}</p>
@@ -75,7 +78,10 @@ const ViewEvent = () => {
           {/* Add more details based on your event structure */}
         </div>
       )}
-    </div>
+      </Col>
+    </Row>
+
+   </Container>
   );
 };
 
