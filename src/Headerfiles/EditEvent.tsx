@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Card,Form,Modal } from "react-bootstrap";
 import UsersService from "../Axios/UsersService";
+import BackgroundImg from '../assets/annie-spratt-sggw4-qDD54-unsplash.jpg';
 
 interface Event{
   id:number;
@@ -79,15 +80,7 @@ useEffect(() => {
 
 const updateEvent= async (data:any)=>{
   try{
-    // const response=await usersService().updateEvent(id,updateEventDetails);
-    // console.log("response",response.data);
-    // const eventDetails = await usersService().getEventList();
-    //setUpdateEventDetails(eventDetails.data);
-    // console.log(eventDetails);
-
-    // setUpdateEventDetails({  ...eventDetails.data, id: eventDetails.data.id  });
-    // console.log("Event updated successfully");
-    // fetchEvents();
+   
     console.log('event', data)
     setUpdateEventDetails({
       id:data.id,
@@ -153,28 +146,19 @@ const handleCloseUpdateModal = () => {
 };
 
 
-  // const handleDelete = (eventId:number) => {
-    
-  //   console.log(`Delete event with ID ${eventId}`);
-  // };
-
-  // const handleUpdate = (eventId:number) => {
-   
-  //   console.log(`Update event with ID ${eventId}`);
-  // };
-
+ 
   return (
-    <div>
+    <div style={{ backgroundImage: `url(${BackgroundImg})`, backgroundSize: 'cover', minHeight: '100vh', padding: '20px' }}>
       <h2>Edit Events</h2>
       {eventList.map((event) => (
-        <Card key={event.id} className="mb-3">
+        <Card key={event.id} className="mb-3" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
           <Card.Body>
             <Card.Title>{event.eventname}</Card.Title>
            
             <Button variant="danger" onClick={() => deleteEvent(event.id)}>
               Delete
             </Button>
-            <Button variant="info" onClick={() => updateEvent(event)}>
+            <Button variant="info" onClick={() => updateEvent(event)} style={{ marginLeft: '10px' }}>
               Update
             </Button>
           </Card.Body>
@@ -254,7 +238,7 @@ const handleCloseUpdateModal = () => {
 
 
 <Form.Group controlId="formRoles">
-  <Form.Label>Roles</Form.Label>
+  <Form.Label>Event Details</Form.Label>
   <Form.Control
     type="text"
     placeholder="Enter roles"
@@ -289,12 +273,8 @@ const handleCloseUpdateModal = () => {
   />
 </Form.Group>
 
-
-
-
-
-            </Form>
-          )}
+   </Form>
+   )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseUpdateModal}>
