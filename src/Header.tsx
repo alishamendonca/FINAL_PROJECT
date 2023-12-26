@@ -3,14 +3,50 @@ import { Navbar, Nav,  } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Logo from './assets/worksphere-high-resolution-logo-transparent.png';
+import './Header.css';
+import { useNavigate } from 'react-router-dom';
+// import SignIn from './Registration/SignIn';
+import { useEffect, useState } from 'react';
 const Header = () => {
   const headerStyle = {
     backgroundColor: '#3887BE', // Header background color
     color: 'white', // Text color
     width:'100%',
     padding: '10px', // Padding
+  
   };
+  const [ loggedin , setLoggedIn] = useState(false);
+  const [userRole,setUserRole]=useState<string|null>(null);
+  
+  const navigate=useNavigate();
+  const checkToken=()=>{
+    const isSignedIn=localStorage.getItem("token");
+     setLoggedIn(!!isSignedIn);    
+  }
+  
+  const handleSignOut=()=>{
+    console.log("correct");
+    localStorage.removeItem("token");
+    setLoggedIn(false);
+    navigate('/');
+    window.location.reload();
 
+  }
+
+  useEffect(()=>{
+    checkToken();
+    const user=localStorage.getItem("userLoggedIn");
+    
+    if(user){
+      const {role}=JSON.parse(user);
+      console.log("Role:",role);
+      setUserRole(role);
+    }
+    
+  },[]);
+  console.log("LoggedIn:", loggedin);
+  console.log("UserRole:", userRole);
+  
   return (
     <Navbar  expand="lg" style={headerStyle} >
       <div className='container-fluid'>
@@ -29,52 +65,78 @@ const Header = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <LinkContainer to="/homepage/">
-            <Nav.Link>Home</Nav.Link>
-          </LinkContainer>
-          <LinkContainer to="/create-event/">
-            <Nav.Link>Schedule Event</Nav.Link>
-          </LinkContainer>
-          {/* <LinkContainer to="/schedule-meeting/">
-            <Nav.Link>Schedule a Meeting</Nav.Link>
-          </LinkContainer> */}
-          <LinkContainer to="/registration/">
-            <Nav.Link>Register</Nav.Link>
-          </LinkContainer>
-          <LinkContainer to="/">
-            <Nav.Link>
-               Sign in</Nav.Link>
-          </LinkContainer>
-          <LinkContainer to="/calendar/">
-            <Nav.Link>Calendar</Nav.Link>
-          </LinkContainer>
-          {/* <LinkContainer to="/roles/">
-            <Nav.Link>Roles Management</Nav.Link>
-          </LinkContainer> */}
-          {/* <LinkContainer to="/participant-list/">
-            <Nav.Link>Participant List</Nav.Link>
-          </LinkContainer> */}
-          <LinkContainer to="/view-event/">
-            <Nav.Link>View Events</Nav.Link>
-          </LinkContainer>
-          <LinkContainer to="/edit-event/">
-            <Nav.Link>Edit Event</Nav.Link>
-          </LinkContainer>
-          {/* <LinkContainer to="/settings/">
-            <Nav.Link>Settings</Nav.Link>
-          </LinkContainer> */}
-        </Nav>
-        {/* <Nav className="ml-auto">
-          {user ? (
-            <NavDropdown title={`Welcome, ${user.username}`} id="basic-nav-dropdown">
-              <NavDropdown.Item onClick={onLogout}>Logout</NavDropdown.Item>
-            </NavDropdown>
-          ) : (
-            <LinkContainer to="/login">
-              <Nav.Link>Login</Nav.Link>
-            </LinkContainer>
+
+        
+      
+             
+             {loggedin && (
+              <>
+                <LinkContainer to="/homepage/" activeClassName="NavLink-active">
+                <Nav.Link className="NavLink-hover">Home</Nav.Link>
+              </LinkContainer>
+              {userRole === "organizer" && (
+            <>
+              <LinkContainer to="/create-event/" activeClassName="NavLink-active">
+                <Nav.Link className="NavLink-hover">Schedule Event</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/edit-event/" activeClassName="NavLink-active">
+                <Nav.Link className="NavLink-hover">Edit Event</Nav.Link>
+              </LinkContainer>
+            </>
           )}
-        </Nav> */}
+
+                
+                     {/* <LinkContainer  to="/create-event/" activeClassName="NavLink-active">
+                       <Nav.Link className="NavLink-hover">Schedule Event</Nav.Link>
+                   </LinkContainer>
+                   <LinkContainer to="/edit-event/" activeClassName="NavLink-active">
+                    <Nav.Link className="NavLink-hover">Edit Event</Nav.Link>
+                 </LinkContainer> */}
+              
+                 
+
+
+              
+              <LinkContainer to="/calendar/" activeClassName="NavLink-active">
+                <Nav.Link className="NavLink-hover">Calendar</Nav.Link>
+              </LinkContainer>
+    
+              <LinkContainer to="/view-event/" activeClassName="NavLink-active">
+                <Nav.Link className="NavLink-hover">View Events</Nav.Link>
+              </LinkContainer>
+            
+              </>
+
+             )}
+         
+        {loggedin &&
+        (
+          <Nav.Link className="NavLink-hover" onClick={handleSignOut}>Sign Out</Nav.Link>
+         
+        )}
+        
+
+      
+        {!loggedin && (<>
+          <LinkContainer to="/registration/" activeClassName="NavLink-active">
+          <Nav.Link className="NavLink-hover">Register</Nav.Link>
+        </LinkContainer>
+            <LinkContainer to="/" activeClassName="NavLink-active">
+              <Nav.Link className="NavLink-hover">
+                Sign in</Nav.Link>
+            </LinkContainer>
+
+        </>
+        )}
+
+
+          
+          
+
+    
+
+        </Nav>
+      
       </Navbar.Collapse>
       </div>
     </Navbar>
