@@ -2,7 +2,8 @@
 //import SignIn from './Registration/SignIn';
 import Routes from './Headerfiles/Route';
 import Header from './Header'
-import { useRoutes } from 'react-router-dom'
+import { useRoutes } from 'react-router-dom';
+
 import './App.css';
 //import { useState, } from 'react';
 import Footer from './Footer';

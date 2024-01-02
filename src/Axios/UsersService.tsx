@@ -2,27 +2,7 @@
 import axios from "./axios";
 
 
-// const UsersService = () => {
-//     const services = () => {
-//         return {
-//             getUserList : async()=>{
-//                 return await axios.get('/users');
-//             },
-//             addUser : async (data: object) => {
-//                 return await axios.post('/users',data);
-//             }
-//         };
-//     };
-//     return services;
 
-// };
-
-// export default UsersService;
-
-
-
-
-//import axios from "./axios";
 
 const UsersService = () => {
   const services = () => {

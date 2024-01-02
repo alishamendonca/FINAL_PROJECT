@@ -29,7 +29,7 @@ const MyCalendar = () => {
   const eventList=events.map((event)=>({
     title:event.eventname,
     start:new Date(`${event.date} ${event.time}`),
-    end: new Date(`${event.date} ${event.time}`),
+    end: new Date(`${event.date} ${event.endtime}`),
   }));
 
   return (

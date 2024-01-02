@@ -123,43 +123,81 @@
   ],
   "event": [
     {
-      "eventname": "Angular Workshop",
-      "date": "2024-01-09",
-      "time": "12:00",
-      "location": "Kala Academy",
+      "id": 18,
+      "eventname": "HTML workshop",
+      "date": "2024-01-11",
+      "time": "10:00",
+      "endtime": "10:30",
+      "location": "Margao",
       "participantList": [
-        "Raina Mendonca",
         "Alisha Mendonca",
-        "Kamalika Rege",
         "Nelson Dsouza",
         "Xavier Dsouza",
-        "Elissa Braganca",
-        "Mary cruz"
-      ],
-      "roles": "Briefing on basics of angular",
-      "mode": "offline",
-      "meetlink": "",
-      "eventDocument": {},
-      "id": 13
-    },
-    {
-      "eventname": "React workshop",
-      "date": "2023-12-30",
-      "time": "11:00",
-      "location": "",
-      "participantList": [
-        "Alisha Mendonca",
-        "Anisha Mendonca",
-        "Xavier Dsouza",
-        "Alister Hosamani",
-        "Elissa Braganca",
+        "Namira Shah",
+        "Raina Mendonca",
         "John Mendonca"
       ],
-      "roles": "Briefing on basics of react js",
-      "mode": "online",
-      "meetlink": "https://meet.google.com/zjx-nebz-uhj",
-      "eventDocument": {},
-      "id": 14
+      "roles": "Briefing",
+      "mode": "offline",
+      "meetlink": "",
+      "eventDocument": "/sampledocument.pdf"
+    },
+    {
+      "eventname": "Code optimization",
+      "date": "2024-01-18",
+      "time": "10:00",
+      "endtime": "11:00",
+      "location": "Margao",
+      "participantList": [
+        "Mary cruz",
+        "Kamalika Rege",
+        "Alisha Mendonca",
+        "Xavier Dsouza",
+        "Alister Hosamani",
+        "Raina Mendonca"
+      ],
+      "roles": "Briefing",
+      "mode": "offline",
+      "meetlink": "",
+      "eventDocument": "/sampledocument.pdf",
+      "id": 20
+    },
+    {
+      "eventname": "Javascript workshop",
+      "date": "2024-01-05",
+      "time": "11:20",
+      "endtime": "11:45",
+      "location": "Kala Academy",
+      "participantList": [
+        "Alisha Mendonca",
+        "Xavier Dsouza",
+        "Elissa Braganca",
+        "Namira Shah",
+        "Alister Hosamani"
+      ],
+      "roles": "Briefing",
+      "mode": "offline",
+      "meetlink": "",
+      "eventDocument": "/Agenda.pdf",
+      "id": 21
+    },
+    {
+      "eventname": "Angular Workshop",
+      "date": "2024-01-20",
+      "time": "11:00",
+      "endtime": "12:00",
+      "location": "Margao",
+      "participantList": [
+        "Alisha Mendonca",
+        "Kamalika Rege",
+        "Xavier Dsouza",
+        "Alex Mendonca"
+      ],
+      "roles": "Briefing",
+      "mode": "offline",
+      "meetlink": "",
+      "eventDocument": "/Agenda.pdf",
+      "id": 22
     }
   ]
 }

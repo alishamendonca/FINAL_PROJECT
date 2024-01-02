@@ -9,12 +9,15 @@ const ViewEvent = () => {
         eventname: string;
         date: string;
         time: string;
+        endtime:string;
         location: string;
         participantList:string[];
         roles:string;
         mode:string;
         meetlink:string;
-        // Add more properties based on your event structure
+        eventDocument: string;
+
+        
       }
       
 
@@ -23,7 +26,7 @@ const ViewEvent = () => {
   const usersService = UsersService(); 
 
   useEffect(() => {
-    // Fetch events data when the component mounts
+    
     const fetchEvents = async () => {
       try {
         const response = await usersService().getEventList();
@@ -37,19 +40,20 @@ const ViewEvent = () => {
   }, []);
 
   const handleDetailsButtonClick = (event:Event) => {
-    // Set the selected event when the "Show Details" button is clicked
+    
     setSelectedEvent(event);
   };
 
   return (
-   <Container style={{ backgroundImage: `url(${BackgroundImg})`, backgroundSize: 'cover', minHeight: '100vh' }}>
+   <div style={{ backgroundImage: `url(${BackgroundImg})`, backgroundSize: 'cover', minHeight: '100vh',padding:'0px',width:'100%' }}>
+    <Container >
     <Row className="justify-content-center">
-      <Col xs={12} md={8}>
+      <Col xs={12} md={8} style={{ padding: '0'}}>
       <h1 className="text-center mt-4 mb-3">Event List</h1>
       <ListGroup >
         {events.map(event => (
-          <ListGroup.Item key={event.id} className="d-flex justify-content-between align-items-center" style={{backgroundColor:'#F6F7C4'}}>
-            <span>{event.eventname}</span>
+          <ListGroup.Item key={event.id} className="d-flex justify-content-between align-items-center" style={{backgroundColor:'rgba(0,0,0,0.5)'}}>
+            <span style={{color:'wheat'}}>{event.eventname}</span>
             <Button variant="info" onClick={() => handleDetailsButtonClick(event)}>
               Show Details
             </Button>
@@ -57,14 +61,15 @@ const ViewEvent = () => {
         ))}
       </ListGroup>
 
-      {/* Display event details when an event is selected */}
+      
       {selectedEvent && (
         <div className="mt-3"  style={{ backgroundColor: '#fff',marginBottom:'20px', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
           <h2 style={{ textDecoration: 'underline' }}>Details for {selectedEvent.eventname}</h2>
           <p>Date: {selectedEvent.date}</p>
-          <p>Time: {selectedEvent.time}</p>
+          <p>Start Time: {selectedEvent.time}</p>
+          <p>End Time: {selectedEvent.endtime}</p>
           <p>Location: {selectedEvent.location}</p>
-          <p>Role: {selectedEvent.roles}</p>
+          <p>Event Details: {selectedEvent.roles}</p>
           <p>Mode: {selectedEvent.mode}</p>
           <p>Meet Link: {selectedEvent.meetlink}</p>
           {/* <p>Participants: {selectedEvent.participantList}</p> */}
@@ -74,14 +79,21 @@ const ViewEvent = () => {
               <li key={index}>{participant}</li>
             ))}
           </ul>
+          {selectedEvent.eventDocument && (
+  <div>
+    <p>Document: <Button style={{ backgroundColor: '#BF3131', borderColor: '#BF3131' }} onClick={() => window.open(selectedEvent.eventDocument, '_blank')}>View Document</Button></p>
+  </div>
+)}
 
-          {/* Add more details based on your event structure */}
+
+          
         </div>
       )}
       </Col>
     </Row>
 
    </Container>
+   </div>
   );
 };
 

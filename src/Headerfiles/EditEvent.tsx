@@ -8,6 +8,7 @@ interface Event{
   eventname:string;
   date: string;
   time: string;
+  endtime:string;
   location: string;
   participantList: string[] | string;
   roles: string;
@@ -24,6 +25,7 @@ const EditEvent: React.FC = () => {
     eventname:'',
     date:'',
     time:'',
+    endtime:'',
     location: '',
     participantList:'',
     roles:'',
@@ -54,10 +56,10 @@ useEffect(() => {
 
   const fetchEvents = async () => {
     try {
-      // Create an instance of the service
+      
       const response = await usersService().getEventList(); // Call the getEventList method
 
-      setEventList(response.data || []); // Assuming the structure is { "events": [...] }
+      setEventList(response.data || []); 
     } catch (error) {
       console.error("Error fetching events:", error);
     }
@@ -87,6 +89,7 @@ const updateEvent= async (data:any)=>{
       eventname:data.eventname,
       date: data.date,
       time: data.time,
+      endtime:data.endtime,
       location: data.location,
       participantList: data.participantList,
       //participantList: data.participantList,
@@ -114,6 +117,7 @@ const handleUpdateSubmit = async () => {
       eventname:'',
       date:'',
       time:'',
+      endtime:'',
       location: '',
       participantList:'',
       roles:'',
@@ -135,6 +139,7 @@ const handleCloseUpdateModal = () => {
     eventname:'',
     date:'',
     time:'',
+    endtime:'',
     location: '',
     participantList:'',
     roles:'',
@@ -151,9 +156,9 @@ const handleCloseUpdateModal = () => {
     <div style={{ backgroundImage: `url(${BackgroundImg})`, backgroundSize: 'cover', minHeight: '100vh', padding: '20px' }}>
       <h2>Edit Events</h2>
       {eventList.map((event) => (
-        <Card key={event.id} className="mb-3" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
+        <Card key={event.id} className="mb-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
           <Card.Body>
-            <Card.Title>{event.eventname}</Card.Title>
+            <Card.Title style={{color:'white'}}>{event.eventname}</Card.Title>
            
             <Button variant="danger" onClick={() => deleteEvent(event.id)}>
               Delete
@@ -195,12 +200,22 @@ const handleCloseUpdateModal = () => {
               </Form.Group>
 
               <Form.Group controlId="formTime">
-                <Form.Label>Time</Form.Label>
+                <Form.Label> StartTime</Form.Label>
                 <Form.Control
                   type="time"
                   value={updateEventDetails.time}
                   onChange={(e) =>
                     setUpdateEventDetails((prev) => ({ ...prev, time: e.target.value }) as Event)
+                  }
+                />
+              </Form.Group>
+              <Form.Group controlId="formTime">
+                <Form.Label> End Time</Form.Label>
+                <Form.Control
+                  type="time"
+                  value={updateEventDetails.endtime}
+                  onChange={(e) =>
+                    setUpdateEventDetails((prev) => ({ ...prev, endtime: e.target.value }) as Event)
                   }
                 />
               </Form.Group>
@@ -269,6 +284,17 @@ const handleCloseUpdateModal = () => {
     value={updateEventDetails.meetlink}
     onChange={(e) =>
       setUpdateEventDetails((prev) => ({ ...prev, meetlink: e.target.value })as Event)
+    }
+  />
+</Form.Group>
+<Form.Group controlId="formEventDocument">
+  <Form.Label>Upload Document</Form.Label>
+  <Form.Control
+    type="text"
+    placeholder="Upload Document"
+    value={updateEventDetails.eventDocument}
+    onChange={(e) =>
+      setUpdateEventDetails((prev) => ({ ...prev, eventDocument: e.target.value })as Event)
     }
   />
 </Form.Group>

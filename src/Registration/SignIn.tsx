@@ -1,6 +1,6 @@
 
 import { Formik } from "formik";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as Yup from 'yup';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button,Container,Row,Col,Modal } from "react-bootstrap";
@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 import UsersService from "../Axios/UsersService";
 import { useNavigate,Link } from "react-router-dom";
 import BackgroundImg from '../assets/annie-spratt-sggw4-qDD54-unsplash.jpg';
-
+import { useAuth } from "../Auth";
 
  
  
@@ -47,7 +47,7 @@ const SignIn = () => {
   });
   const navigate = useNavigate();
 
-
+  //const [member,setMember]=useState('');
   const handleShowModal = (title: string, body: string, type: string) => {
     setModalTitle(title);
     setModalBody(body);
@@ -59,7 +59,7 @@ const SignIn = () => {
     setShowModal(false);
   };
   const userService = UsersService();
-
+  const auth=useAuth();
 
   const onSubmit = async (values: any, actions: any) => {
     try {
@@ -73,12 +73,15 @@ const SignIn = () => {
       console.log('User found', user);
     
       if (user) {
+        console.log("User authenticated:", user);
+        auth.login(user);
         handleShowModal("Success", "User signed in successfully!", "success");
         localStorage.setItem("token",'true');
+        console.log("localstorage: ",localStorage);
         localStorage.setItem("userLoggedIn", JSON.stringify(user));
         console.log('success');
       navigate('/homepage/')
-      window.location.reload();
+      //window.location.reload();
       } else {
         handleShowModal("Error", "Invalid email,password or role", "error");
         console.log('error');
@@ -220,8 +223,8 @@ const SignIn = () => {
                 </Button>
               </Col>
             </Row> 
-                        {/* Modal for Success/Error messages */}
-                        <Modal show={showModal} onHide={handleHideModal}>
+                        
+           <Modal show={showModal} onHide={handleHideModal}>
               <Modal.Header closeButton>
                 <Modal.Title>{modalTitle}</Modal.Title>
               </Modal.Header>

@@ -5,26 +5,26 @@ import { Formik } from "formik";
 import * as Yup from 'yup';
 import UsersService from "../Axios/UsersService";
 import backgroundImg from '../assets/annie-spratt-sggw4-qDD54-unsplash.jpg';
+import { useNavigate } from "react-router-dom";
 interface EventFormData {
   eventname: string;
   date: string;
   time: string;
+  endtime:string;
   location: string;
   participantList: string[];
   roles: string;
   mode: string | undefined;
   meetlink: string;
-  eventDocument:File | null;
+  eventDocument:string | null;
 }
-const validateForm = (values: { location?: string | undefined; meetlink?: string | undefined; eventname: string; date: string; time: string; participantList: string[]; roles: string; mode: NonNullable<"online" | "offline" | undefined>; }) => {
-  //const errors: Partial<Record<keyof EventFormData, string>> = {};
+const validateForm = (values: { location?: string | undefined; meetlink?: string | undefined; eventname: string; date: string; time: string;endtime:string, participantList: string[]; roles: string; mode: NonNullable<"online" | "offline" | undefined>; }) => {
+  
 
   if ((values.mode === 'online' && !values.meetlink) || (values.mode === 'offline' && !values.location)) {
     throw new Yup.ValidationError('Validation failed', values, 'conditionalValidation');
   }
-  // if (!Array.isArray(values.participantList) || values.participantList.length === 0) {
-  //   throw new Yup.ValidationError('Please select at least one participant', values, 'participantListValidation');
-  // }
+ 
 
 };
 
@@ -32,17 +32,20 @@ const validationSchema = Yup.object({
   eventname: Yup.string().max(50).required("This field is required"),
   date: Yup.string().required("This field is required"),
   time: Yup.string().required("This field is required"),
+  endtime: Yup.string().required("This field is required"),
   location: Yup.string(),
   participantList: Yup.array().min(1, "Please select at least one participant").required("This field is required"),
   roles: Yup.string().max(100).required("This field is required"),
   mode: Yup.string().oneOf(["online", "offline"]).required("This field is required"),
   meetlink: Yup.string(),
-  eventDocument:Yup.mixed().test('fileSize','File size is too large.maximum size allowed is 10MB',(value)=>{
-    if(!value){
-      return true;
-    }
-    return (value as File).size <= 1024 * 1024 * 10;
-  })
+  // eventDocument:Yup.mixed().test('fileSize','File size is too large.maximum size allowed is 10MB',(value)=>{
+  //   if(!value){
+  //     return true;
+  //   }
+  //   return (value as File).size <= 1024 * 1024 * 10;
+  // })
+  eventDocument: Yup.string().max(255).required("This field is required"),
+
 }).test('conditionalValidation', 'Validation failed', validateForm);
 
 
@@ -52,22 +55,24 @@ const Createevent: React.FC = () => {
     eventname: "",
     date: "",
     time: "",
+    endtime:"",
     location: "",
     participantList: [] as string[],
     roles: "",
     mode: undefined,
     meetlink: "",
-    eventDocument: null as File|null,
+    eventDocument: null as string|null
   });
   const [userArray, setUserArray] = useState<Array<{ fullname: string, id: number }>>([]);
 
+const navigate=useNavigate();
   const usersService = UsersService();
   useEffect(() => {
-    // Fetch user data when the component mounts
+    
     const fetchUsers = async () => {
       try {
-        const response = await usersService().getUserList(); // Implement getUsers method in your Axios service
-        setUserArray(response.data); // Assuming the structure is { "users": [...] }
+        const response = await usersService().getUserList(); 
+        setUserArray(response.data); 
       } catch (error) {
         console.error("Error fetching users:", error);
       }
@@ -84,14 +89,17 @@ const Createevent: React.FC = () => {
       eventname: "",
       date: "",
       time: "",
+      endtime:"",
       location: "",
       participantList: [],
       roles: "",
       mode: undefined,
       meetlink: "",
-      eventDocument: null as File|null,
+      eventDocument: null as string|null,
     });
     console.log("Event added successfully");
+    navigate('/view-event/');
+
   } catch (error) {
 
     console.error("Error submitting form:", error);
@@ -102,9 +110,9 @@ const Createevent: React.FC = () => {
   };
   //const userArray=usersService().getUserList();
   return (
-    <div  style={{ backgroundImage: `url(${backgroundImg})`, backgroundSize: 'cover', minHeight: '100vh' }} >
-      <h1 style={{textAlign:'center'}}>Fill in the details below to create an Event</h1>
-          <Container style={{ backgroundColor: 'rgba(255, 255, 255, 0.6)',marginBottom:'15px',width:'900px', padding: '10px', borderRadius: '10px' }}>
+    <div  style={{ backgroundImage: `url(${backgroundImg})`, backgroundSize: 'cover',marginBottom:'0px' ,minHeight: '100vh',width:'100%' }} >
+      <h1 style={{textAlign:'center',color:'wheat'}}>Fill in the details below to create an Event</h1>
+     <Container style={{ color:'white',backgroundColor: 'rgba(0, 0, 0, 0.5)',marginBottom:'0px',width:'900px', padding: '10px', borderRadius: '10px' }}>
       <Row className="justify-content-center mt-5">
         <Col xs={12} md={8}>
           <Formik
@@ -162,7 +170,7 @@ const Createevent: React.FC = () => {
                 </Form.Group>
 
                 <Form.Group>
-                  <Form.Label>Time:</Form.Label>
+                  <Form.Label> Start Time:</Form.Label>
                   <Form.Control
                     type="time"
                     name="time"
@@ -173,6 +181,21 @@ const Createevent: React.FC = () => {
                   />
                  {errors.time && touched.time && (
                     <p className="error">{errors.time}</p>
+                  )}
+
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label> End Time:</Form.Label>
+                  <Form.Control
+                    type="time"
+                    name="endtime"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.endtime}
+                    className={errors.endtime && touched.endtime ? "is-invalid" : ""}
+                  />
+                 {errors.endtime && touched.endtime && (
+                    <p className="error">{errors.endtime}</p>
                   )}
 
                 </Form.Group>
@@ -281,19 +304,22 @@ const Createevent: React.FC = () => {
   
                   </Form.Group>
                 )}
-                <Form.Group>
-                    <Form.Label>Upload Document:</Form.Label>
-                    <Form.Control
-                      type="file"
-                      name="eventDocument"
-                      onChange={(e) => setFieldValue("eventDocument", (e.currentTarget as HTMLInputElement).files?.[0] || null)}
-                      onBlur={handleBlur}
-                      className={errors.eventDocument && touched.eventDocument ? "is-invalid" : ""}
-                    />
-                    {errors.eventDocument && touched.eventDocument && (
-                      <p className="error">{errors.eventDocument}</p>
-                    )}
-                  </Form.Group>
+               
+                  <Form.Group>
+                <Form.Label>Upload Document:</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="eventDocument"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  //value={values.eventDocument}
+                  className={errors.eventDocument && touched.eventDocument ? "is-invalid" : ""}
+                />
+                {errors.eventDocument && touched.eventDocument && (
+                  <p className="error">{errors.eventDocument}</p>
+                )}
+              </Form.Group>
+
 
 
 
