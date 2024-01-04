@@ -119,6 +119,26 @@
       "gender": "male",
       "role": "user",
       "id": 21
+    },
+    {
+      "fullname": "Babita Fernandes",
+      "email": "babita4@gmail.com",
+      "phone": "9944221725",
+      "password": "Babita@123",
+      "confirmPassword": "Babita@123",
+      "gender": "female",
+      "role": "user",
+      "id": 22
+    },
+    {
+      "fullname": "Joseph Fernandes",
+      "email": "joesph11@gmail.com",
+      "phone": "9199337211",
+      "password": "Joesph@123",
+      "confirmPassword": "Joesph@123",
+      "gender": "male",
+      "role": "user",
+      "id": 23
     }
   ],
   "event": [
@@ -198,6 +218,46 @@
       "meetlink": "",
       "eventDocument": "/Agenda.pdf",
       "id": 22
+    },
+    {
+      "id": 23,
+      "eventname": "Debugging",
+      "date": "2024-01-30",
+      "time": "12:00",
+      "endtime": "14:00",
+      "location": "Verna",
+      "participantList": [
+        "Alisha Mendonca",
+        "Nelson Dsouza",
+        "Xavier Dsouza",
+        "Anisha Mendonca",
+        "Raina Mendonca"
+      ],
+      "roles": "Briefing",
+      "mode": "offline",
+      "meetlink": "",
+      "eventDocument": "/sampledocument.pdf"
+    },
+    {
+      "id": 25,
+      "eventname": "DBMS",
+      "date": "2024-01-10",
+      "time": "09:00",
+      "endtime": "10:00",
+      "location": "",
+      "participantList": [
+        "Alisha Mendonca",
+        "Nelson Dsouza",
+        "Babita Fernandes",
+        "Alister Hosamani",
+        "Namira Shah",
+        "Anisha Mendonca",
+        "Alex Mendonca"
+      ],
+      "roles": "Hands on session on DBMS ",
+      "mode": "online",
+      "meetlink": "https://meet.google.com/nsw-dnux-zqe",
+      "eventDocument": "/Agenda.pdf"
     }
   ]
 }
